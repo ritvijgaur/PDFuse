@@ -73,7 +73,7 @@ pdf-exe-sfx-builder/
 ├── nsis/
 │   └── makensis.exe        # (Windows only)
 ├── pdf_icon.ico            # PDF icon for deception (can be replaced to change output icon)
-├── pdf_installer.py        # Main script
+├── pdf_builder.py        # Main script
 └── README.md
 ```
 
@@ -82,13 +82,13 @@ pdf-exe-sfx-builder/
 ## ⚙️ Usage
 
 ```bash
-python pdf_installer.py <path_to_pdf> <path_to_exe> <output_name>
+python pdf_builder.py <path_to_pdf> <path_to_exe> <output_name>
 ```
 
 ### Example:
 
 ```bash
-python pdf_installer.py report.pdf payload.exe final_output
+python pdf_builder.py report.pdf payload.exe final_output
 ```
 
 📦 This generates: `final_output.pdf.exe`
