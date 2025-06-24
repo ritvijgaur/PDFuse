@@ -2,14 +2,22 @@ import os
 import subprocess
 import tempfile
 import shutil
+import platform
 
 PDF_ICON_NAME = "pdf_icon.ico"
-LOCAL_NSIS_PATH = os.path.join(os.path.dirname(__file__), 'nsis', 'makensis.exe')
 LOCAL_ICON_PATH = os.path.join(os.path.dirname(__file__), PDF_ICON_NAME)
+
+# Detect OS and set NSIS path accordingly
+if platform.system() == "Windows":
+    LOCAL_NSIS_PATH = os.path.join(os.path.dirname(__file__), 'nsis', 'makensis.exe')
+elif platform.system() == "Linux":
+    LOCAL_NSIS_PATH = "/usr/bin/makensis"  # assumes NSIS installed via package manager
+else:
+    raise OSError("Unsupported operating system")
 
 def create_nsis_installer(pdf_path, exe_path, output_exe, nsis_path=LOCAL_NSIS_PATH):
     if not os.path.isfile(nsis_path):
-        raise FileNotFoundError(f"[!] NSIS not found at {nsis_path}. Please include NSIS portable in 'nsis/' folder.")
+        raise FileNotFoundError(f"[!] NSIS not found at {nsis_path}. Please install or include it properly.")
 
     if not os.path.isfile(LOCAL_ICON_PATH):
         raise FileNotFoundError(f"[!] Icon file not found at {LOCAL_ICON_PATH}. Please include 'pdf_icon.ico' in the repo.")
