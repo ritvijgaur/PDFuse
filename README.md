@@ -109,6 +109,18 @@ python pdf_installer.py report.pdf payload.exe final_output
 
 ---
 
+## ⚠️ Antivirus Evasion Notice
+
+This tool **does not make your payload FUD (Fully Undetectable)** by default.
+
+* Meterpreter `.exe` or standard PowerShell-based payloads generated via tools like `msfvenom` or `ps2exe` are typically flagged by antivirus software.
+* To avoid detection, you must use a custom or obfuscated payload that is already FUD.
+* This builder only packages and disguises your existing EXE; it does not modify or encrypt its behavior.
+
+Use with caution, and always test in a safe, isolated environment.
+
+---
+
 ## 🔐 Disclaimer
 
 This tool is created **for educational and ethical penetration testing** purposes only.
